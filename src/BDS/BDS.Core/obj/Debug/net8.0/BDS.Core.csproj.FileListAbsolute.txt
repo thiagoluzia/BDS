@@ -1,0 +1,12 @@
+D:\source\BDS\src\BDS\BDS.Core\bin\Debug\net8.0\BDS.Core.deps.json
+D:\source\BDS\src\BDS\BDS.Core\bin\Debug\net8.0\BDS.Core.dll
+D:\source\BDS\src\BDS\BDS.Core\bin\Debug\net8.0\BDS.Core.pdb
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.AssemblyInfoInputs.cache
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.AssemblyInfo.cs
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.csproj.CoreCompileInputs.cache
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.sourcelink.json
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.dll
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\refint\BDS.Core.dll
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\BDS.Core.pdb
+D:\source\BDS\src\BDS\BDS.Core\obj\Debug\net8.0\ref\BDS.Core.dll
