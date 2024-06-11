@@ -1,4 +1,4 @@
-﻿namespace BDS.Core.Entities.Enums
+﻿namespace BDS.Core.Enums
 {
     /// <summary>
     /// Cada tipo sanguíneo é caracterizado pela presença ou pela ausência de determinados antígenos nos glóbulos vermelhos. A presença de aglutinogênio A, de aglutinogênio B, de aglutinogênio A e B e a ausência desses aglutinogênios vão especificar o tipo de sangue de cada indivíduo.

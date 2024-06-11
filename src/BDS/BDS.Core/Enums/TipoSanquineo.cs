@@ -1,4 +1,4 @@
-﻿namespace BDS.Core.Entities.Enums
+﻿namespace BDS.Core.Enums
 {
     /// <summary>
     /// Os tipos de sangue estão divididos em quatro grupos: A, B, AB e O. É o famoso sistema ABO, descoberto no início do século XX pelo médico e cientista austríaco Karl Landsteiner – prêmio Nobel de Medicina em 1930 -, pois suas pesquisas permitiram salvar vidas e garantiram transfusões de sangue corretas, o que possibilitou maior segurança nos procedimentos cirúrgicos.
