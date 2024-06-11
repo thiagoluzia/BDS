@@ -1,9 +1,14 @@
-﻿using BDS.Core.Entities.Enums;
+﻿using BDS.Core.Enums;
 
 namespace BDS.Core.Entities
 {
     public class Estoque : BaseEntity
     {
+        public TipoSanquineo TipoSanquineo { get; private set; }
+        public FatorRh FatorRh { get; private set; }
+        public int QuantidadeML { get; private set; }
+
+
         public Estoque(TipoSanquineo tipoSanquineo, FatorRh fatorRh, int quantidadeMl)
         {
             TipoSanquineo = tipoSanquineo;
@@ -11,15 +16,9 @@ namespace BDS.Core.Entities
             QuantidadeML = quantidadeMl;
         }
 
-        public TipoSanquineo TipoSanquineo { get; private set; }
-        public FatorRh FatorRh { get; private set; }
-        public int QuantidadeML { get; private set; }
-        public EstoqueConfig EstoqueMinimo { get; private set; }
 
-        public void AtualizarEstoque(TipoSanquineo tipoSanquineo, FatorRh fatorRh, int quantidadeMl)
+        public void AtualizarEstoque(int quantidadeMl)
         {
-            TipoSanquineo = tipoSanquineo;
-            FatorRh = fatorRh;
             QuantidadeML += quantidadeMl;
         }
     }

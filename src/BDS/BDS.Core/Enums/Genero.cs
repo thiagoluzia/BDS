@@ -1,4 +1,4 @@
-﻿namespace BDS.Core.Entities.Enums
+﻿namespace BDS.Core.Enums
 {
     public enum Genero
     {

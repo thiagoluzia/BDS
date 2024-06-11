@@ -1,4 +1,4 @@
-﻿using BDS.Core.Entities.Enums;
+﻿using BDS.Core.Enums;
 
 namespace BDS.Core.Entities
 {
