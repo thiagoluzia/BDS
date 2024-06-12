@@ -6,6 +6,6 @@
         Task<int> Alterar(T entity);
         Task<int> Deletar(T entity);
         Task<IEnumerable<T>> Consultar();
-        Task<T> ConsultarID(Guid Id);
+        Task<T> ConsultarId(Guid Id);
     }
 }
