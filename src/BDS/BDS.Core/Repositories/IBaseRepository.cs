@@ -2,10 +2,10 @@
 {
     public interface IBaseRepository<T>
     {
-        Task<int> Incluir(T  entity);
-        Task<int> Alterar(T entity);
-        Task<int> Deletar(T entity);
-        Task<IEnumerable<T>> Consultar();
-        Task<T> ConsultarId(Guid Id);
+        Task<int> IncluirAsync(T  entity);
+        Task<int> AlterarAsync(T entity);
+        Task<int> DeletarAsync(T entity);
+        Task<IEnumerable<T>> ConsultarAsync();
+        Task<T> ConsultarIdAsync(Guid Id);
     }
 }

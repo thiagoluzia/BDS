@@ -47,6 +47,16 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "BDS.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BDS.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BDS.Core.dll": {}
+        }
       }
     }
   },
@@ -113,10 +123,16 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "BDS.Core/1.0.0": {
+      "type": "project",
+      "path": "../BDS.Core/BDS.Core.csproj",
+      "msbuildProject": "../BDS.Core/BDS.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "BDS.Core >= 1.0.0",
       "MediatR >= 12.3.0"
     ]
   },
@@ -154,7 +170,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\source\\BDS\\src\\BDS\\BDS.Core\\BDS.Core.csproj": {
+              "projectPath": "D:\\source\\BDS\\src\\BDS\\BDS.Core\\BDS.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

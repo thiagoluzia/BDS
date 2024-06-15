@@ -15,4 +15,8 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BDS.Core\BDS.Core.csproj" />
+  </ItemGroup>
+
 </Project>

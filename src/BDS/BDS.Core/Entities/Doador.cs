@@ -13,17 +13,10 @@ namespace BDS.Core.Entities
         public FatorRh Fator { get; private set; }
         public List<Doacao> Doacao { get; private set; }
         public Endereco Endereco { get; private set; }
+        public bool Ativo { get; private set; }
 
 
-        public Doador(
-            string nome,
-            string email,
-            DateTime dataNascimento,
-            Genero genero,
-            double peso,
-            TipoSanquineo tipoSanquineo,
-            FatorRh fator,
-            Endereco endereco)
+        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Endereco endereco)
         {
             Nome = nome;
             Email = email;
@@ -32,24 +25,21 @@ namespace BDS.Core.Entities
             Peso = peso;
             TipoSanquineo = tipoSanquineo;
             Fator = fator;
+            Doacao = new List<Doacao>();
             Endereco = endereco;
 
             Doacao = new List<Doacao>();
+            Ativo = true;
         }
 
-
-        public void AtualizarDoador(
-            string nome,
-            string email, 
-            DateTime dataNascimento,
-            double peso,
-            Endereco endereco)
+        public void AtualizarDoador(string nome, string email, double peso, Endereco endereco, Genero genero)
         {
             Nome = nome;
             Email = email;
-            DataNascimento = dataNascimento;
             Peso = peso;
             Endereco = endereco;
+            Genero = genero;
         }
+
     }
 }

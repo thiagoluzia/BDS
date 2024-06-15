@@ -7,12 +7,18 @@
         public int QuantidadeML { get; private set; }
         public Doador? Doador { get; private set; }
 
-        
+
         public Doacao(int doadorID, DateTime dataDoacao, int quantidadeML)
         {
             DoadorID = doadorID;
             DataDoacao = dataDoacao;
-            QuantidadeML = quantidadeML;
+            QuantidadeML = +quantidadeML;
         }
+
+        public void AtualizarDoacao(int quantidadeML)
+        {
+            QuantidadeML = +quantidadeML;
+        }
+
     }
 }
