@@ -4,6 +4,7 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Incluir
 {
     public class IncluirDoacao : IRequest<Guid>
     {
+
         public int DoadorID { get; private set; }
         public DateTime DataDoacao { get; private set; }
         public int QuantidadeML { get; private set; }
@@ -16,5 +17,6 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Incluir
 
             DataDoacao = DateTime.Now;
         }
+
     }
 }

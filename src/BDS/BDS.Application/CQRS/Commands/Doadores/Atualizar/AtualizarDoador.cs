@@ -1,5 +1,6 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Enums;
+using BDS.Core.ValueObjects;
 using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
@@ -25,5 +26,6 @@ namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
             Peso = peso;
             Endereco = endereco;
         }
+
     }
 }

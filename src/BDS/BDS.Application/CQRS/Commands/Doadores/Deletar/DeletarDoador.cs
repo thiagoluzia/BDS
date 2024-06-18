@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Deletar
 {
-    internal class DeletarDoador
+    public  class DeletarDoador : IRequest<Unit>
     {
+
+        public Guid Id { get; private set; }
+
+
+        public DeletarDoador(Guid id)
+        {
+            Id = id;
+        }
+
     }
 }

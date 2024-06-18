@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doacoes.Deletar
 {
-    internal class DeletarDoacao
+    public  class DeletarDoacao : IRequest<Unit>
     {
+        public Guid ID { get; private set; }
+
+
+        public DeletarDoacao(Guid iD)
+        {
+            ID = iD;
+        }
+
     }
 }

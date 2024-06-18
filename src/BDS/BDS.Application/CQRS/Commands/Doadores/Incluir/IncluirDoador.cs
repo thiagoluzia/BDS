@@ -1,5 +1,6 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Enums;
+using BDS.Core.ValueObjects;
 using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Incluir
@@ -30,5 +31,6 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
             Doacoes = new List<Doacao>();
             Endereco = endereco;
         }
+
     }
 }

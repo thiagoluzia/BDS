@@ -5,6 +5,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
 {
     public class AtualizarDoadorHandler : IRequestHandler<AtualizarDoador, Unit>
     {
+
         private readonly IDoadorRepository _repository;
 
 
@@ -18,12 +19,13 @@ namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
         {
             var doador = await _repository.ConsultarIdAsync(request.Id);
 
-            doador.AtualizarDoador(request.Nome, request.Email, request.Peso, request.Endereco, request.Genero);
+            doador.Atualizar(request.Nome, request.Email, request.Peso, request.Endereco, request.Genero);
 
             await _repository.AlterarAsync(doador);
 
             return Unit.Value;
 
         }
+
     }
 }

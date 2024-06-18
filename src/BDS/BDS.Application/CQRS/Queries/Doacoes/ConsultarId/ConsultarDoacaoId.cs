@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DTOs;
+using MediatR;
 
 namespace BDS.Application.CQRS.Queries.Doacoes.ConsultarId
 {
-    internal class ConsultarDoacaoId
+    public class ConsultarDoacaoId : IRequest<DoacaoViewModel>
     {
+
+        public Guid Id { get; private set; }
+
+
+        public ConsultarDoacaoId(Guid id)
+        {
+            Id = id;
+        }
+
     }
 }

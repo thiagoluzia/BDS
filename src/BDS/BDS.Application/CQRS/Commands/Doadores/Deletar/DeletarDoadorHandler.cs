@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BDS.Core.Repositories;
+using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Deletar
 {
-    internal class DeletarDoadorHandler
+    public class DeletarDoadorHandler : IRequestHandler<DeletarDoador, Unit>
     {
+
+        private readonly IDoadorRepository _repository;
+
+
+        public DeletarDoadorHandler(IDoadorRepository repository)
+        {
+            _repository = repository;
+        }
+
+
+        public async Task<Unit> Handle(DeletarDoador request, CancellationToken cancellationToken)
+        {
+            var doador = await  _repository.ConsultarIdAsync(request.Id);
+
+            await _repository.DeletarAsyncId(doador.Id);
+
+            return Unit.Value;
+        }
+
     }
 }

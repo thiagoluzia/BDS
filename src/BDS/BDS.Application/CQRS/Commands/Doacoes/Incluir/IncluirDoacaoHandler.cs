@@ -6,6 +6,7 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Incluir
 {
     public class IncluirDoacaoHandler : IRequestHandler<IncluirDoacao, Guid>
     {
+
         private readonly IDoacaoRepository _repository;
 
 
@@ -23,5 +24,6 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Incluir
 
             return doacao.Id;
         }
+
     }
 }

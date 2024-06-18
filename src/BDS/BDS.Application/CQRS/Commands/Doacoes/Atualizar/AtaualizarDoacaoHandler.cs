@@ -6,6 +6,7 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Atualizar
 {
     public class AtaualizarDoacaoHandler : IRequestHandler<AtualizarDoacao, Unit>
     {
+
         private readonly IDoacaoRepository _repository;
 
 
@@ -14,16 +15,17 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Atualizar
             _repository = repository;
         }
 
-        //TODO: Corrigir 
+
         public async Task<Unit> Handle(AtualizarDoacao request, CancellationToken cancellationToken)
         {
-            var doacao = _repository.ConsultarIdAsync(request.Id);
+            var doacao = await  _repository.ConsultarIdAsync(request.Id);
 
-            doacao.AtualizarDoacao(request.QuantidadeML);
+            doacao.Atualizar(request.QuantidadeML);
 
             await _repository.AlterarAsync(doacao);
 
             return Unit.Value;
         }
+
     }
 }

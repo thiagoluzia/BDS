@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DTOs;
+using MediatR;
 
 namespace BDS.Application.CQRS.Queries.Doadores.Consultar
 {
-    internal class ConsultarDoador
+    public  class ConsultarDoador : IRequest<IEnumerable<DoadorViewModel>>
     {
+
+        public Guid Id { get; private set; }
+
+
+        public ConsultarDoador(Guid id)
+        {
+            Id = id;
+        }
+
     }
 }

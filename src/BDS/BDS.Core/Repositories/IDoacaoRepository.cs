@@ -6,7 +6,7 @@ namespace BDS.Core.Repositories
     {
         Task<int> IncluirAsync(Doacao entity);
         Task<int> AlterarAsync(Doacao entity);
-        Task<int> DeletarAsyncT(int id);
+        Task<int> DeletarAsyncId(Guid id);
         Task<IEnumerable<Doacao>> ConsultarAsync();
         Task<Doacao> ConsultarIdAsync(Guid Id);
     }

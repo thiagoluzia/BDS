@@ -6,6 +6,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
 {
     public class IncluirDoadorHandler : IRequestHandler<IncluirDoador, Guid>
     {
+
         private readonly IDoadorRepository _repository;
 
         public IncluirDoadorHandler(IDoadorRepository repository)
