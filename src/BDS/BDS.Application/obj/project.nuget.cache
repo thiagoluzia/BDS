@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rkj7B1g2CwlkPSFMnp57NkfJza7sMNnoVkoqHVcn0X4xRXUnhfb3DBc6RlL4B0hTjBRfbuiYD4k+9E78n7GkEw==",
+  "dgSpecHash": "3RFSmhbdB0Zj52QU5q7KEywP53EKItVHU/OyyiX1+T4tAXD/MaNr+D0iJCdkyknqWI0wnfH6WYzDqFvB+kQfzg==",
   "success": true,
   "projectFilePath": "D:\\source\\BDS\\src\\BDS\\BDS.Application\\BDS.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\thiag\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\thiag\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\thiag\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
