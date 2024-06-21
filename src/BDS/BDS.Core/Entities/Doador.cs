@@ -8,6 +8,7 @@ namespace BDS.Core.Entities
     {
 
         private readonly IDoadorService _service;
+        private readonly IServiceProvider _serviceProvider;
 
         public string Nome { get; private set; }
         public string Email { get; private set; }
@@ -65,6 +66,7 @@ namespace BDS.Core.Entities
 
             return false;
 
+    
         }
 
     }

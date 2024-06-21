@@ -1,5 +1,4 @@
-﻿using BDS.Core.Entities;
-using BDS.Core.Repositories;
+﻿using BDS.Core.Repositories;
 using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doacoes.Atualizar

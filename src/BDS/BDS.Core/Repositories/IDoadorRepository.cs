@@ -9,5 +9,6 @@ namespace BDS.Core.Repositories
         Task<int> DeletarAsyncId(Guid id);
         Task<IEnumerable<Doador>> ConsultarAsync();
         Task<Doador> ConsultarIdAsync(Guid Id);
+        Task<bool> ConsultarEmail(string Email);
     }
 }
