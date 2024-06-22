@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "BDS.Infrastructure/1.0.0": {
+        "dependencies": {
+          "BDS.Core": "1.0.0"
+        },
+        "runtime": {
+          "BDS.Infrastructure.dll": {}
+        }
+      },
+      "BDS.Core/1.0.0": {
+        "runtime": {
+          "BDS.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BDS.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BDS.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

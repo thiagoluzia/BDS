@@ -1,5 +1,4 @@
-﻿using BDS.Application.CQRS.Commands.Doadores.Atualizar;
-using BDS.Application.CQRS.Commands.Doadores.Incluir;
+﻿using BDS.Application.CQRS.Commands.Doadores.Incluir;
 using FluentValidation;
 
 namespace BDS.Application.Validators

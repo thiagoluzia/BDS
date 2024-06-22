@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "DUhKbHDTIktr7iaB1oPEDnYS3mEJGuLfaOBV60BXkhw=",
+  "Source": "BDS.Api",
+  "BasePath": "_content/BDS.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

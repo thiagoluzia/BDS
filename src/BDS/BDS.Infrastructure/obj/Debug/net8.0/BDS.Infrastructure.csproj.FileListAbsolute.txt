@@ -1,0 +1,16 @@
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Infrastructure.deps.json
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Infrastructure.dll
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Infrastructure.pdb
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Core.dll
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Core.pdb
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.csproj.AssemblyReference.cache
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.AssemblyInfoInputs.cache
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.AssemblyInfo.cs
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.csproj.CoreCompileInputs.cache
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.sourcelink.json
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.csproj.CopyComplete
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.dll
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\refint\BDS.Infrastructure.dll
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.pdb
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\ref\BDS.Infrastructure.dll

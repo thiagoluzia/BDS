@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BDS.Api.props" />
+</Project>
