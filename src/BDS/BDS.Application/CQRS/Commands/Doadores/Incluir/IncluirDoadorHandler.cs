@@ -1,7 +1,6 @@
-﻿using BDS.Core.Repositories;
-using BDS.Core.Entities;
+﻿using BDS.Core.Entities;
+using BDS.Core.Repositories;
 using MediatR;
-using BDS.Core.Services.Interfaces;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Incluir
 {
@@ -9,12 +8,10 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
     {
 
         private readonly IDoadorRepository _repository;
-        private readonly IDoadorService _service;
 
-        public IncluirDoadorHandler(IDoadorRepository repository, IDoadorService service)
+        public IncluirDoadorHandler(IDoadorRepository repository)
         {
             _repository = repository;
-            _service = service;
         }
 
         public async Task<Guid> Handle(IncluirDoador request, CancellationToken cancellationToken)
@@ -28,8 +25,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
                 request.Peso,
                 request.TipoSanquineo,
                 request.Fator,
-                request.Endereco,
-                _service);
+                request.EnderecoId);
 
             await _repository.IncluirAsync(doador);
 

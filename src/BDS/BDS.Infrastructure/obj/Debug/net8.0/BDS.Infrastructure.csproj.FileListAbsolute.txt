@@ -14,3 +14,5 @@ D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.dll
 D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\refint\BDS.Infrastructure.dll
 D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.pdb
 D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\ref\BDS.Infrastructure.dll
+D:\source\BDS\src\BDS\BDS.Infrastructure\bin\Debug\net8.0\BDS.Infrastructure.runtimeconfig.json
+D:\source\BDS\src\BDS\BDS.Infrastructure\obj\Debug\net8.0\BDS.Infrastructure.genruntimeconfig.cache

@@ -1,14 +1,10 @@
 ﻿using BDS.Core.Enums;
-using BDS.Core.Services.Interfaces;
-using BDS.Core.ValueObjects;
 
 namespace BDS.Core.Entities
 {
     public class Doador :  BaseEntity
     {
 
-        private readonly IDoadorService _service;
-        private readonly IServiceProvider _serviceProvider;
 
         public string Nome { get; private set; }
         public string Email { get; private set; }
@@ -17,16 +13,15 @@ namespace BDS.Core.Entities
         public double Peso { get; private set; }
         public TipoSanquineo TipoSanquineo { get; private set; }
         public FatorRh Fator { get; private set; }
-        public List<Doacao> Doacao { get; private set; }
+        public List<Doacao> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
+        public Guid EnderecoId { get; private set; }
         public bool Ativo { get; private set; }
 
+        protected Doador(){}
 
-        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Endereco endereco, IDoadorService service)
+        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Guid enderecoId)
         {
-            _service = service;
-
-            
 
             Nome = nome;
             Email = email;
@@ -35,38 +30,21 @@ namespace BDS.Core.Entities
             Peso = peso;
             TipoSanquineo = tipoSanquineo;
             Fator = fator;
-            Doacao = new List<Doacao>();
-            Endereco = endereco;
+            EnderecoId = enderecoId;
 
-            Doacao = new List<Doacao>();
+            Doacoes = new List<Doacao>();
             Ativo = true;
 
         }
 
         public void Atualizar(string nome, string email, double peso, Endereco endereco, Genero genero)
         {
-            if (!ExisteEmail(email))
-                Email = email;
-            else
-                return;
 
+            Email = email; 
             Nome = nome;
             Peso = peso;
             Endereco = endereco;
             Genero = genero;
-        }
-
-        private bool ExisteEmail(string email)
-        {
-
-            if (_service.ExisteEmail(email))
-            {
-                throw new ArgumentException("Email já existe");
-            }
-
-            return false;
-
-    
         }
 
     }

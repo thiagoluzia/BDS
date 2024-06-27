@@ -1,6 +1,6 @@
 @BDS.Api_HostAddress = http://localhost:5219
 
-GET {{BDS.Api_HostAddress}}/weatherforecast/
+GET {{BDS.Api_HostAddress}}/Doador/
 Accept: application/json
 
 ###

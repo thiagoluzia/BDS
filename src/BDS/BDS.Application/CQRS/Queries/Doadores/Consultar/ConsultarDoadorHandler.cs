@@ -28,7 +28,7 @@ namespace BDS.Application.CQRS.Queries.Doadores.Consultar
                                                  , d.Peso
                                                  , d.TipoSanquineo
                                                  , d.Fator
-                                                 , d.Doacao
+                                                 , d.Doacoes
                                                  , d.Endereco
                                                  , d.Ativo))
                 .ToList();

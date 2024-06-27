@@ -22,7 +22,7 @@ namespace BDS.Application.CQRS.Queries.Doacoes.ConsultarId
 
             if (doacao is null) return default;
 
-            var doacaoViewModel = new DoacaoViewModel(doacao.DoadorID, doacao.DataDoacao, doacao.QuantidadeML);
+            var doacaoViewModel = new DoacaoViewModel(doacao.DoadorId, doacao.DataDoacao, doacao.QuantidadeML);
 
             return doacaoViewModel;
         }

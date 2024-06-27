@@ -23,7 +23,7 @@ namespace BDS.Application.CQRS.Queries.Doacoes.Consultar
             if (doacoes is null) return default;
 
             var doacoesViewModel = doacoes
-                .Select(d => new DoacaoViewModel(d.DoadorID, d.DataDoacao, d.QuantidadeML))
+                .Select(d => new DoacaoViewModel(d.DoadorId, d.DataDoacao, d.QuantidadeML))
                 .ToList();
 
             return doacoesViewModel;

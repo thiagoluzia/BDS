@@ -35,7 +35,7 @@ namespace BDS.Application.CQRS.Queries.Doadores.ConsultarId
                                                     , doador.Peso
                                                     , doador.TipoSanquineo
                                                     , doador.Fator
-                                                    , doador.Doacao
+                                                    , doador.Doacoes
                                                     , doador.Endereco
                                                     , doador.Ativo);
 

@@ -1,6 +1,5 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Enums;
-using BDS.Core.ValueObjects;
 
 namespace DTOs
 {

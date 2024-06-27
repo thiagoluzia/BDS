@@ -10,9 +10,9 @@ namespace BDS.Infrastructure.Persistences.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Doador>> ConsultarAsync()
+        public async  Task<IEnumerable<Doador>> ConsultarAsync()
         {
-            throw new NotImplementedException();
+            return new List<Doador>() { };
         }
 
         public Task<bool> ConsultarEmail(string Email)

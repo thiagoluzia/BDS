@@ -1,10 +1,11 @@
 using BDS.Api.Filters;
-using BDS.Application.CQRS.Commands.Doadores.Incluir;
 using BDS.Application.CQRS.Queries.Doadores.Consultar;
 using BDS.Application.Validators;
 using BDS.Core.Repositories;
+using BDS.Infrastructure.Persistences;
 using BDS.Infrastructure.Persistences.Repositories;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,10 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(Filters)))
 
 //Integrações
 
+
+//Infra
+var connection = builder.Configuration.GetConnectionString("BDS_ConnectionString");
+builder.Services.AddDbContext<DBContext>(options => options.UseSqlServer(connection), ServiceLifetime.Singleton);
 
 
 
