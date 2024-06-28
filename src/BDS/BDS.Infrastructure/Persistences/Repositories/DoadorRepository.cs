@@ -1,38 +1,94 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BDS.Infrastructure.Persistences.Repositories
 {
     public class DoadorRepository : IDoadorRepository
     {
-        public Task<int> AlterarAsync(Doador entity)
+        private readonly DBContext _dbContext;
+
+        public DoadorRepository(DBContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public async  Task<IEnumerable<Doador>> ConsultarAsync()
+        public async Task<int> AlterarAsync(Doador entity)
         {
-            return new List<Doador>() { };
+
+            var doador = await _dbContext.Doadores
+                                    .AsNoTracking()
+                                    .SingleOrDefaultAsync(x => x.Id == entity.Id);
+
+            if(doador is null)
+                return default(int);
+
+           await  _dbContext.Doadores.AddAsync( doador = new Doador(entity.Nome
+                                                        , entity.Email
+                                                        , entity.DataNascimento
+                                                        , entity.Genero
+                                                        , entity.Peso
+                                                        , entity.TipoSanquineo
+                                                        , entity.Fator
+                                                        , entity.Endereco));
+
+            return await  _dbContext.SaveChangesAsync();
+
         }
 
-        public Task<bool> ConsultarEmail(string Email)
+        public async Task<IEnumerable<Doador>> ConsultarAsync()
         {
-            throw new NotImplementedException();
+
+            var doadores = await _dbContext.Doadores.AsNoTracking().ToListAsync();
+
+            if (doadores is null)
+                return Enumerable.Empty<Doador>();
+
+            return doadores;
+
         }
 
-        public Task<Doador> ConsultarIdAsync(Guid Id)
+        public async Task<bool> ConsultarEmail(string Email)
         {
-            throw new NotImplementedException();
+
+            var existe = await _dbContext.Doadores.SingleOrDefaultAsync(e => e.Email == Email);
+
+            return existe == null;
+
         }
 
-        public Task<int> DeletarAsyncId(Guid id)
+        public async Task<Doador> ConsultarIdAsync(Guid Id)
         {
-            throw new NotImplementedException();
+
+            var doador = await _dbContext.Doadores
+                .SingleOrDefaultAsync(x => x.Id == Id);
+
+            if (doador is null)
+                return default;
+
+            return doador;
+
         }
 
-        public Task<int> IncluirAsync(Doador entity)
+        public async Task<int> DeletarAsyncId(Guid id)
         {
-            throw new NotImplementedException();
+
+            var doador = await _dbContext.Doadores.SingleOrDefaultAsync(x => x.Id == id);
+
+            if (doador is not null)
+                _dbContext.Doadores.Remove(doador);
+
+            return _dbContext.SaveChanges();
+
+        }
+
+        public async Task<int> IncluirAsync(Doador entity)
+        {
+
+            var doadorId = await _dbContext.Doadores.AddAsync(entity);
+
+            return await _dbContext.SaveChangesAsync();
+
         }
     }
 }

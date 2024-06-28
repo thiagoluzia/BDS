@@ -25,7 +25,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
                 request.Peso,
                 request.TipoSanquineo,
                 request.Fator,
-                request.EnderecoId);
+                request.Endereco);
 
             await _repository.IncluirAsync(doador);
 

@@ -1,5 +1,6 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Enums;
+using BDS.Core.ValueObjects;
 using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doadores.Incluir
@@ -16,10 +17,9 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
         public FatorRh Fator { get; private set; }
         public List<Doacao> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
-        public Guid EnderecoId { get; set; }
 
 
-        public IncluirDoador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator,  Guid enderecoId)
+        public IncluirDoador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator,  Endereco endereco)
         {
             Nome = nome;
             Email = email;
@@ -29,7 +29,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
             TipoSanquineo = tipoSanquineo;
             Fator = fator;
             Doacoes = new List<Doacao>();
-            EnderecoId = enderecoId;
+            Endereco = endereco;
         }
 
     }

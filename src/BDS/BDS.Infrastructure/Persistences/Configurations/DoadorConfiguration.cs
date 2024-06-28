@@ -10,17 +10,26 @@ namespace BDS.Infrastructure.Persistences.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            //Doações
             builder
                 .HasMany(d => d.Doacoes)
                 .WithOne()
                 .HasForeignKey(e => e.Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            //Endereço
             builder
-                .HasOne(e => e.Endereco)
-                .WithMany()
-                .HasForeignKey(e => e.EnderecoId)
-                .OnDelete(DeleteBehavior.Restrict);
+                 .OwnsOne(d => d.Endereco, e =>
+                 {
+                     e.Property(e => e.CEP).HasColumnName("CEP");
+                     e.Property(e => e.Logradouro).HasColumnName("Logradouro");
+                     e.Property(e => e.Bairro).HasColumnName("Bairro");
+                     e.Property(e => e.Cidade).HasColumnName("Cidade");
+                     e.Property(e => e.Numero).HasColumnName("Numero");
+                     e.Property(e => e.Referencia).HasColumnName("Referencia");
+                     
+                 });
+             
                 
         }
     }

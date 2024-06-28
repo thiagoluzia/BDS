@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BDS.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+861479f3370c54208837662415c398312042727f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae17426c9f1c7b2ee793766448ae2ac7801ddfba")]
 [assembly: System.Reflection.AssemblyProductAttribute("BDS.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BDS.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

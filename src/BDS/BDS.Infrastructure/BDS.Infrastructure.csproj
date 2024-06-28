@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BDS.Application\BDS.Application.csproj" />
     <ProjectReference Include="..\BDS.Core\BDS.Core.csproj" />
   </ItemGroup>
 

@@ -265,6 +265,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "D:\\source\\BDS\\src\\BDS\\BDS.Application\\BDS.Application.csproj": {
+                "projectPath": "D:\\source\\BDS\\src\\BDS\\BDS.Application\\BDS.Application.csproj"
+              },
               "D:\\source\\BDS\\src\\BDS\\BDS.Core\\BDS.Core.csproj": {
                 "projectPath": "D:\\source\\BDS\\src\\BDS\\BDS.Core\\BDS.Core.csproj"
               }

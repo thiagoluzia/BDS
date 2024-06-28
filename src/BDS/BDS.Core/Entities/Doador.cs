@@ -1,4 +1,5 @@
 ﻿using BDS.Core.Enums;
+using BDS.Core.ValueObjects;
 
 namespace BDS.Core.Entities
 {
@@ -15,12 +16,11 @@ namespace BDS.Core.Entities
         public FatorRh Fator { get; private set; }
         public List<Doacao> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
-        public Guid EnderecoId { get; private set; }
         public bool Ativo { get; private set; }
 
         protected Doador(){}
 
-        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Guid enderecoId)
+        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Endereco endereco)
         {
 
             Nome = nome;
@@ -30,7 +30,7 @@ namespace BDS.Core.Entities
             Peso = peso;
             TipoSanquineo = tipoSanquineo;
             Fator = fator;
-            EnderecoId = enderecoId;
+            Endereco = endereco;
 
             Doacoes = new List<Doacao>();
             Ativo = true;

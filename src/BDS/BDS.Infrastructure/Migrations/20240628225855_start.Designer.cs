@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BDS.Infrastructure.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240627231111_Start")]
-    partial class Start
+    [Migration("20240628225855_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,9 +70,6 @@ namespace BDS.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EnderecoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Fator")
                         .HasColumnType("int");
 
@@ -91,51 +88,7 @@ namespace BDS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoId");
-
                     b.ToTable("Doadores");
-                });
-
-            modelBuilder.Entity("BDS.Core.Entities.Endereco", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CEP")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cidade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataInclusao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("DoadorID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UF")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoadorID");
-
-                    b.ToTable("Endereco");
                 });
 
             modelBuilder.Entity("BDS.Core.Entities.Doacao", b =>
@@ -157,24 +110,55 @@ namespace BDS.Infrastructure.Migrations
 
             modelBuilder.Entity("BDS.Core.Entities.Doador", b =>
                 {
-                    b.HasOne("BDS.Core.Entities.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.OwnsOne("BDS.Core.ValueObjects.Endereco", "Endereco", b1 =>
+                        {
+                            b1.Property<Guid>("DoadorId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Bairro")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Bairro");
+
+                            b1.Property<string>("CEP")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("CEP");
+
+                            b1.Property<string>("Cidade")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Cidade");
+
+                            b1.Property<string>("Logradouro")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Logradouro");
+
+                            b1.Property<string>("Numero")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Numero");
+
+                            b1.Property<string>("Referencia")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Referencia");
+
+                            b1.Property<string>("UF")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("DoadorId");
+
+                            b1.ToTable("Doadores");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DoadorId");
+                        });
+
+                    b.Navigation("Endereco")
                         .IsRequired();
-
-                    b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("BDS.Core.Entities.Endereco", b =>
-                {
-                    b.HasOne("BDS.Core.Entities.Doador", "Doador")
-                        .WithMany()
-                        .HasForeignKey("DoadorID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Doador");
                 });
 
             modelBuilder.Entity("BDS.Core.Entities.Doador", b =>

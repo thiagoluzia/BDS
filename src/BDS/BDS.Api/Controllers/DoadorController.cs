@@ -1,7 +1,9 @@
 ﻿using BDS.Application.CQRS.Commands.Doadores.Atualizar;
 using BDS.Application.CQRS.Commands.Doadores.Deletar;
 using BDS.Application.CQRS.Commands.Doadores.Incluir;
+using BDS.Application.CQRS.Queries.Doacoes.ConsultarId;
 using BDS.Application.CQRS.Queries.Doadores.Consultar;
+using BDS.Application.CQRS.Queries.Doadores.ConsultarId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,13 +39,24 @@ namespace BDS.Api.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> ConsultarIdAsync(Guid id)
         {
-            return Ok();
+            var doador = new ConsultarDoadorId(id);
+            var doadorViewModel = await _mediator.Send(doador);
+
+            if (doadorViewModel is null)
+                return NotFound("Doador não encontrado");
+
+            return Ok(doadorViewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> IncluirAsync([FromBody] IncluirDoador doador)
         {
-            return Ok();
+
+            var id = await _mediator.Send(doador);
+
+            //return CreatedAtAction(nameof(ConsultarIdAsync), new { id }, doador);
+            return CreatedAtAction(nameof(ConsultarIdAsync),  id );
+
         }
 
         [HttpDelete("id")]

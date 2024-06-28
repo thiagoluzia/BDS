@@ -550,6 +550,7 @@
       },
       "BDS.Infrastructure/1.0.0": {
         "dependencies": {
+          "BDS.Application": "1.0.0",
           "BDS.Core": "1.0.0",
           "Humanizer.Core": "2.8.26",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.31",

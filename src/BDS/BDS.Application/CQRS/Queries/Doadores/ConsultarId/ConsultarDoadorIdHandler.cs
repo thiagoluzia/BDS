@@ -28,7 +28,8 @@ namespace BDS.Application.CQRS.Queries.Doadores.ConsultarId
 
             if (doador is null) return default;
 
-            var doadorViwModel = new DoadorViewModel(doador.Nome
+            var doadorViwModel = new DoadorViewModel( doador.Id
+                                                    , doador.Nome
                                                     , doador.Email
                                                     , doador.DataNascimento
                                                     , doador.Genero
