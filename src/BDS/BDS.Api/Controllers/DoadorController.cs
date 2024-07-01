@@ -1,7 +1,6 @@
 ﻿using BDS.Application.CQRS.Commands.Doadores.Atualizar;
 using BDS.Application.CQRS.Commands.Doadores.Deletar;
 using BDS.Application.CQRS.Commands.Doadores.Incluir;
-using BDS.Application.CQRS.Queries.Doacoes.ConsultarId;
 using BDS.Application.CQRS.Queries.Doadores.Consultar;
 using BDS.Application.CQRS.Queries.Doadores.ConsultarId;
 using MediatR;
@@ -10,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BDS.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class DoadorController : ControllerBase
     {
 
@@ -29,14 +29,13 @@ namespace BDS.Api.Controllers
             var doarores = await _mediator.Send(new ConsultarDoador());
 
             if(doarores is null)
-            {
-                return Ok("Nenhumregistro encontrado!");
-            }
+                return Ok("Nenhum registro encontrado!");
+            
 
             return Ok(doarores);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ConsultarIdAsync(Guid id)
         {
             var doador = new ConsultarDoadorId(id);
@@ -49,32 +48,47 @@ namespace BDS.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IncluirAsync([FromBody] IncluirDoador doador)
+        public async Task<IActionResult> IncluirAsync(IncluirDoador doador)
         {
 
             var id = await _mediator.Send(doador);
 
-            //return CreatedAtAction(nameof(ConsultarIdAsync), new { id }, doador);
-            return CreatedAtAction(nameof(ConsultarIdAsync),  id );
+            if (id == Guid.Empty)
+                return BadRequest("Erro ao incluir um doador");
+
+            return CreatedAtAction(nameof(ConsultarIdAsync), new { id }, doador);
 
         }
 
-        [HttpDelete("id")]
-        public async Task<IActionResult> DeletarAsync([FromBody] DeletarDoador doador, Guid Id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarAsync(DeletarDoador doador, Guid id)
+        {
+
+            if (doador.Id != id)
+                return BadRequest("Id do objeto diferente do Id a ser atualizado");
+
+
+            var existe = await _mediator.Send(new ConsultarDoadorId(id));
+            if (existe is null)
+                return NotFound("Doador não encontrado.");
+
+            await _mediator.Send(doador);
+
+
+            return NoContent();
+
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarAsync(AtualizarDoador doador, Guid id)
         {
             return Ok();
         }
 
-        [HttpPut("id")]
-        public async Task<IActionResult> AtualizarAsync([FromBody] AtualizarDoador doador, Guid id)
-        {
-            return Ok();
-        }
-
-        [HttpGet("email")]
-        public async Task<IActionResult> ConsultarEmailAsync(string email)
-        {
-            return Ok();
-        }
+        //[HttpGet("{email}")]
+        //public async Task<IActionResult> ConsultarEmailAsync(string email)
+        //{
+        //    return Ok();
+        //}
     }
 }
