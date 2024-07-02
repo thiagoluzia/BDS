@@ -23,7 +23,7 @@ namespace BDS.Api.Controllers
 
 
         [HttpGet]
-        public  async Task<IActionResult> ConsultarAsync()
+        public  async Task<IActionResult> Consultar()
         {
 
             var doacoes = await _mediator.Send(new ConsultarDoacao());
@@ -36,7 +36,7 @@ namespace BDS.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultarIdAsync(Guid id)
+        public async Task<IActionResult> ConsultarId(Guid id)
         {
 
             var doacao = new ConsultarDoacaoId(id);
@@ -52,16 +52,16 @@ namespace BDS.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IncluirAsync(IncluirDoacao doacao)
+        public async Task<IActionResult> Incluir(IncluirDoacao doacao)
         {
             var id = await _mediator.Send(doacao);
 
-            return CreatedAtAction(nameof(ConsultarIdAsync), id);
+            return CreatedAtAction(nameof(ConsultarId), id);
 
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> AtualizarAsync(AtualizarDoacao doacao, Guid id)
+        public async Task<IActionResult> Atualizar(AtualizarDoacao doacao, Guid id)
         {
             if (doacao.Id != id)
                 return BadRequest("Id do objeto diferente do Id a ser atualizado"); 
@@ -72,7 +72,7 @@ namespace BDS.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletarAsync(DeletarDoacao doacao, Guid id)
+        public async Task<IActionResult> Deletar(DeletarDoacao doacao, Guid id)
         {
             return Ok();
         }

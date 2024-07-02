@@ -6,6 +6,7 @@ using BDS.Infrastructure.Persistences;
 using BDS.Infrastructure.Persistences.Repositories;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,13 +23,17 @@ builder.Services.AddScoped<IDoacaoRepository, DoacaoRepository>();
 
 //Validaçoes
 builder.Services.AddValidatorsFromAssemblyContaining<IncluirDoadorValidator>();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(ConsultarDoador)));
+builder.Services.AddMediatR(cfg  => cfg.RegisterServicesFromAssemblyContaining(typeof(ConsultarDoador)));
 //builder.Services.AddMediatR()
 
 
 // Adicionando configurações de Filtros e Validações
 builder.Services.AddControllers(options => options.Filters.Add(typeof(Filters)));
 
+//builder.Services.AddMvc(options =>
+//{
+//    options.SuppressAsyncSuffixInActionNames = false;
+//});
 //Integrações
 
 

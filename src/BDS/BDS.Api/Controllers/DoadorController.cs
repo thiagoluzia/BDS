@@ -23,7 +23,7 @@ namespace BDS.Api.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> ConsultarAsync()
+        public async Task<IActionResult> Consultar()
         {
 
             var doarores = await _mediator.Send(new ConsultarDoador());
@@ -36,7 +36,7 @@ namespace BDS.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultarIdAsync(Guid id)
+        public async Task<IActionResult> ConsultarId(Guid id)
         {
             var doador = new ConsultarDoadorId(id);
             var doadorViewModel = await _mediator.Send(doador);
@@ -48,7 +48,7 @@ namespace BDS.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IncluirAsync(IncluirDoador doador)
+        public async Task<IActionResult> Incluir(IncluirDoador doador)
         {
 
             var id = await _mediator.Send(doador);
@@ -56,12 +56,12 @@ namespace BDS.Api.Controllers
             if (id == Guid.Empty)
                 return BadRequest("Erro ao incluir um doador");
 
-            return CreatedAtAction(nameof(ConsultarIdAsync), new { id }, doador);
+            return CreatedAtAction(nameof(ConsultarId), new { id }, doador);
 
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletarAsync(DeletarDoador doador, Guid id)
+        public async Task<IActionResult> Deletar(DeletarDoador doador, Guid id)
         {
 
             if (doador.Id != id)
@@ -80,7 +80,7 @@ namespace BDS.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> AtualizarAsync(AtualizarDoador doador, Guid id)
+        public async Task<IActionResult> Atualizar(AtualizarDoador doador, Guid id)
         {
             return Ok();
         }
