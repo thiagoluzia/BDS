@@ -14,3 +14,5 @@ D:\source\BDS\src\BDS\BDS.Application\obj\Debug\net8.0\BDS.Application.dll
 D:\source\BDS\src\BDS\BDS.Application\obj\Debug\net8.0\refint\BDS.Application.dll
 D:\source\BDS\src\BDS\BDS.Application\obj\Debug\net8.0\BDS.Application.pdb
 D:\source\BDS\src\BDS\BDS.Application\obj\Debug\net8.0\ref\BDS.Application.dll
+D:\source\BDS\src\BDS\BDS.Application\bin\Debug\net8.0\BDS.Infrastructure.dll
+D:\source\BDS\src\BDS\BDS.Application\bin\Debug\net8.0\BDS.Infrastructure.pdb

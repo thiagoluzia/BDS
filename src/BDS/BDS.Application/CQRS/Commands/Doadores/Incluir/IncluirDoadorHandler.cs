@@ -16,7 +16,7 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
 
         public async Task<Guid> Handle(IncluirDoador request, CancellationToken cancellationToken)
         {
-
+            
             var doador = new Doador(
                 request.Nome,
                 request.Email,
@@ -26,6 +26,9 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
                 request.TipoSanquineo,
                 request.Fator,
                 request.Endereco);
+
+            var existe = await _repository.ExisteEmail(doador.Email, null);
+            doador.ValidarEmailUnico(existe);
 
             await _repository.IncluirAsync(doador);
 

@@ -16,7 +16,7 @@ namespace BDS.Application.CQRS.Queries.Doadores.ConsultarEmail
 
         public async Task<bool> Handle(ConsultarEmailDoador request, CancellationToken cancellationToken)
         {
-            var emailExiste = await _repository.ConsultarEmail(request.Email);
+            var emailExiste = await _repository.ExisteEmail(request.Email, null);
 
             return emailExiste;
         }

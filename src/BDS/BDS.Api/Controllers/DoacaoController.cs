@@ -13,10 +13,10 @@ namespace BDS.Api.Controllers
     public class DoacaoController : ControllerBase
     {
 
-        private readonly Mediator _mediator;
+        private readonly IMediator _mediator;
 
 
-        public DoacaoController(Mediator mediator)
+        public DoacaoController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -51,12 +51,13 @@ namespace BDS.Api.Controllers
 
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Incluir(IncluirDoacao doacao)
         {
             var id = await _mediator.Send(doacao);
 
-            return CreatedAtAction(nameof(ConsultarId), id);
+            return CreatedAtAction(nameof(ConsultarId),new { id }, doacao);
 
         }
 
@@ -64,7 +65,7 @@ namespace BDS.Api.Controllers
         public async Task<IActionResult> Atualizar(AtualizarDoacao doacao, Guid id)
         {
             if (doacao.Id != id)
-                return BadRequest("Id do objeto diferente do Id a ser atualizado"); 
+                return BadRequest("Id do objeto diferente do Id a ser atualizado."); 
 
             await _mediator.Send(doacao);
 
@@ -74,7 +75,18 @@ namespace BDS.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Deletar(DeletarDoacao doacao, Guid id)
         {
-            return Ok();
+
+            if (doacao.ID != id)
+                return BadRequest("Id do objeto diferente do Id a ser deletado.");
+
+            var existe =  _mediator.Send(new ConsultarDoacaoId(id));
+
+            if (existe is null)
+                return NotFound("A Doação a ser excluída não pode ser encontrada.");
+
+            await  _mediator.Send(doacao);
+
+            return NoContent();
         }
     }
 }

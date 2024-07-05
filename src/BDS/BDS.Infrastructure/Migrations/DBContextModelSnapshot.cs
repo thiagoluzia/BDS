@@ -25,6 +25,7 @@ namespace BDS.Infrastructure.Migrations
             modelBuilder.Entity("BDS.Core.Entities.Doacao", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Ativo")
@@ -65,7 +66,6 @@ namespace BDS.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Fator")
@@ -75,7 +75,6 @@ namespace BDS.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Peso")
@@ -91,19 +90,11 @@ namespace BDS.Infrastructure.Migrations
 
             modelBuilder.Entity("BDS.Core.Entities.Doacao", b =>
                 {
-                    b.HasOne("BDS.Core.Entities.Doador", "Doador")
-                        .WithMany()
+                    b.HasOne("BDS.Core.Entities.Doador", null)
+                        .WithMany("Doacoes")
                         .HasForeignKey("DoadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BDS.Core.Entities.Doador", null)
-                        .WithMany("Doacoes")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Doador");
                 });
 
             modelBuilder.Entity("BDS.Core.Entities.Doador", b =>

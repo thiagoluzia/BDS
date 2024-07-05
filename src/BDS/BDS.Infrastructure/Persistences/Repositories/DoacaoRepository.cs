@@ -1,33 +1,52 @@
 ﻿using BDS.Core.Entities;
 using BDS.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BDS.Infrastructure.Persistences.Repositories
 {
     public class DoacaoRepository : IDoacaoRepository
     {
-        public Task<int> AlterarAsync(Doacao entity)
+        private readonly DBContext _dbContext;
+
+
+        public DoacaoRepository(DBContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task<IEnumerable<Doacao>> ConsultarAsync()
+
+        public async Task<int> AlterarAsync(Doacao entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Entry(entity).State = EntityState.Modified;
+
+            return await _dbContext.SaveChangesAsync();
         }
 
-        public Task<Doacao> ConsultarIdAsync(Guid Id)
+        public async Task<IEnumerable<Doacao>> ConsultarAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Doacoes.ToListAsync();
         }
 
-        public Task<int> DeletarAsyncId(Guid id)
+        public async Task<Doacao?> ConsultarIdAsync(Guid Id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Doacoes.SingleOrDefaultAsync(x => x.Id == Id);
         }
 
-        public Task<int> IncluirAsync(Doacao entity)
+        public async Task<int> DeletarAsync(Doacao entity)
         {
-            throw new NotImplementedException();
+
+            _dbContext.Entry(entity).State = EntityState.Modified;
+
+            return await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Guid> IncluirAsync(Doacao entity)
+        {
+            await _dbContext.Doacoes.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity.Id;
+
         }
     }
 }

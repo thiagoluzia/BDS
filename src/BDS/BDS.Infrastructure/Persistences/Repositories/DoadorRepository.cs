@@ -17,7 +17,6 @@ namespace BDS.Infrastructure.Persistences.Repositories
         {
 
             var doador = await _dbContext.Doadores
-                                    .AsNoTracking()
                                     .SingleOrDefaultAsync(x => x.Id == entity.Id);
 
             if(doador is null)
@@ -48,12 +47,19 @@ namespace BDS.Infrastructure.Persistences.Repositories
 
         }
 
-        public async Task<bool> ConsultarEmail(string Email)
+        public async Task<bool> ExisteEmail(string Email, Guid? id )
         {
 
-            var existe = await _dbContext.Doadores.SingleOrDefaultAsync(e => e.Email == Email);
+            var existe = await _dbContext.Doadores.SingleOrDefaultAsync(e => e.Email == Email && e.Id != id);
 
-            return existe == null;
+            if (id != null)
+                if (existe.Id.CompareTo(id) == 1)// && existe.Email == Email)
+                    return false;
+
+            if (existe is not null) 
+                return true;
+
+            return false;
 
         }
 
@@ -84,7 +90,7 @@ namespace BDS.Infrastructure.Persistences.Repositories
 
         public async Task<int> IncluirAsync(Doador entity)
         {
-
+          
             var doadorId = await _dbContext.Doadores.AddAsync(entity);
 
             return await _dbContext.SaveChangesAsync();

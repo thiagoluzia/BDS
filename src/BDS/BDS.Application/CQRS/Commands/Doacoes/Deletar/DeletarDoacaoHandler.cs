@@ -1,4 +1,5 @@
-﻿using BDS.Core.Repositories;
+﻿using BDS.Core.Entities;
+using BDS.Core.Repositories;
 using MediatR;
 
 namespace BDS.Application.CQRS.Commands.Doacoes.Deletar
@@ -6,20 +7,22 @@ namespace BDS.Application.CQRS.Commands.Doacoes.Deletar
     public class DeletarDoacaoHandler : IRequestHandler<DeletarDoacao, Unit>
     {
 
-        private readonly IDoadorRepository _doadorRepository;
+        private readonly IDoacaoRepository _doacaoRepository;
 
 
-        public DeletarDoacaoHandler(IDoadorRepository doadorRepository)
+        public DeletarDoacaoHandler(IDoacaoRepository doacaoRepository)
         {
-            _doadorRepository = doadorRepository;
+            _doacaoRepository = doacaoRepository;
         }
 
 
         public async Task<Unit> Handle(DeletarDoacao request, CancellationToken cancellationToken)
         {
-            var doador = await _doadorRepository.ConsultarIdAsync(request.ID);
+            var doacao = await _doacaoRepository.ConsultarIdAsync(request.ID);
+            
+            doacao.Deletar();
 
-            await _doadorRepository.DeletarAsyncId(doador.Id);
+            await _doacaoRepository.DeletarAsync(doacao);
 
             return Unit.Value;
         }

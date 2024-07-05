@@ -2,6 +2,7 @@
 using BDS.Application.CQRS.Commands.Doadores.Deletar;
 using BDS.Application.CQRS.Commands.Doadores.Incluir;
 using BDS.Application.CQRS.Queries.Doadores.Consultar;
+using BDS.Application.CQRS.Queries.Doadores.ConsultarEmail;
 using BDS.Application.CQRS.Queries.Doadores.ConsultarId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -65,7 +66,7 @@ namespace BDS.Api.Controllers
         {
 
             if (doador.Id != id)
-                return BadRequest("Id do objeto diferente do Id a ser atualizado");
+                return BadRequest("Id do objeto diferente do Id a ser deletado");
 
 
             var existe = await _mediator.Send(new ConsultarDoadorId(id));
@@ -82,13 +83,18 @@ namespace BDS.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Atualizar(AtualizarDoador doador, Guid id)
         {
-            return Ok();
+            if (doador.Id != id)
+                return BadRequest("Id do objeto diferente do Id a ser atualizado");
+
+
+            var existe = await _mediator.Send(new ConsultarDoadorId(id));
+            if (existe is null)
+                return NotFound("Doador não encontrado.");
+
+            await _mediator.Send(doador);
+
+            return NoContent();
         }
 
-        //[HttpGet("{email}")]
-        //public async Task<IActionResult> ConsultarEmailAsync(string email)
-        //{
-        //    return Ok();
-        //}
     }
 }

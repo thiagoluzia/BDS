@@ -7,16 +7,15 @@ namespace BDS.Core.Entities
     {
 
 
-        public string Nome { get; private set; }
-        public string Email { get; private set; }
+        public string? Nome { get; private set; }
+        public string? Email { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
         public double Peso { get; private set; }
         public TipoSanquineo TipoSanquineo { get; private set; }
         public FatorRh Fator { get; private set; }
-        public List<Doacao> Doacoes { get; private set; }
+        public ICollection<Doacao?> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
-        public bool Ativo { get; private set; }
 
         protected Doador(){}
 
@@ -27,14 +26,12 @@ namespace BDS.Core.Entities
             Email = email;
             DataNascimento = dataNascimento;
             Genero = genero;
-            Peso = peso;
+            Peso = ValidarPeso(peso);
             TipoSanquineo = tipoSanquineo;
             Fator = fator;
             Endereco = endereco;
 
-            Doacoes = new List<Doacao>();
-            Ativo = true;
-
+            //Doacoes = new List<Doacao
         }
 
         public void Atualizar(string nome, string email, double peso, Endereco endereco, Genero genero)
@@ -47,5 +44,18 @@ namespace BDS.Core.Entities
             Genero = genero;
         }
 
+        public void ValidarEmailUnico(bool existeEmail)
+        {
+            if(existeEmail)
+                throw new Exception("O e-mail já se encontra cadastrado");
+        }
+
+        public double  ValidarPeso(double peso)
+        {
+            if (peso <= (double)Enums.Peso.PESO_MINIMO)
+                throw new Exception("Abaixo do peso permitido para cadastro de doador.");
+
+            return peso;
+        }
     }
 }

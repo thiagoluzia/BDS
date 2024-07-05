@@ -1,12 +1,13 @@
 using BDS.Api.Filters;
-using BDS.Application.CQRS.Queries.Doadores.Consultar;
+using BDS.Application.Abstractions.External.ViaCEP;
+using BDS.Application.CQRS;
 using BDS.Application.Validators;
 using BDS.Core.Repositories;
+using BDS.Infrastructure.Integrations.ViaCep.Services;
 using BDS.Infrastructure.Persistences;
 using BDS.Infrastructure.Persistences.Repositories;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +18,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//INTEGRAÇÕES
+builder.Services.AddHttpClient<IApiViaCepService, ApiViaCepService>();
+
 //Interfaces
+builder.Services.AddScoped<IViaCepService, ViaCepService>();
+
 builder.Services.AddScoped<IDoadorRepository, DoadorRepository>();
 builder.Services.AddScoped<IDoacaoRepository, DoacaoRepository>();
 
 //Validaçoes
 builder.Services.AddValidatorsFromAssemblyContaining<IncluirDoadorValidator>();
-builder.Services.AddMediatR(cfg  => cfg.RegisterServicesFromAssemblyContaining(typeof(ConsultarDoador)));
+builder.Services.AddMediatR(cfg  => cfg.RegisterServicesFromAssemblyContaining(typeof(CQRSContract)));
 //builder.Services.AddMediatR()
 
 
@@ -40,6 +46,7 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(Filters)))
 //Infra
 var connection = builder.Configuration.GetConnectionString("BDS_ConnectionString");
 builder.Services.AddDbContext<DBContext>(options => options.UseSqlServer(connection), ServiceLifetime.Singleton);
+
 
 
 

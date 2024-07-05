@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BDS.Core\BDS.Core.csproj" />
+    <ProjectReference Include="..\BDS.Infrastructure\BDS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
