@@ -3,6 +3,7 @@ using BDS.Application.CQRS.Commands.Doacoes.Deletar;
 using BDS.Application.CQRS.Commands.Doacoes.Incluir;
 using BDS.Application.CQRS.Queries.Doacoes.Consultar;
 using BDS.Application.CQRS.Queries.Doacoes.ConsultarId;
+using BDS.Application.CQRS.Queries.Doadores.ConsultarId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,7 +56,12 @@ namespace BDS.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Incluir(IncluirDoacao doacao)
         {
+            var maiorIdade = await _mediator.Send(new ConsultarDoadorId(doacao.DoadorID));
+
+
             var id = await _mediator.Send(doacao);
+            if (id == Guid.Empty)
+                return NotFound("Doção não criada.");
 
             return CreatedAtAction(nameof(ConsultarId),new { id }, doacao);
 

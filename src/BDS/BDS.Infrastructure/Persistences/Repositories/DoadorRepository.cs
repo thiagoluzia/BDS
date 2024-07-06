@@ -67,6 +67,7 @@ namespace BDS.Infrastructure.Persistences.Repositories
         {
 
             var doador = await _dbContext.Doadores
+                .Include(e => e.Doacoes)
                 .SingleOrDefaultAsync(x => x.Id == Id);
 
             if (doador is null)

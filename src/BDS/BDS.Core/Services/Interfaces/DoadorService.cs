@@ -1,6 +1,6 @@
 ﻿namespace BDS.Core.Services.Interfaces
 {
-    public interface IDoadorService
+    public interface DoadorService
     {
         bool ExisteEmail(string email);
     }
