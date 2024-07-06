@@ -21,14 +21,15 @@ namespace BDS.Application.CQRS.Queries.Doadores.Consultar
             var doadores = await _repository.ConsultarAsync();
 
             var doadoresViewModel = doadores
-                .Select(d => new DoadorViewModel(d.Nome
+                .Select(d => new DoadorViewModel(  d.Id
+                                                 , d.Nome
                                                  , d.Email
                                                  , d.DataInclusao
                                                  , d.Genero
                                                  , d.Peso
                                                  , d.TipoSanquineo
                                                  , d.Fator
-                                                 , d.Doacao
+                                                 , d.Doacoes
                                                  , d.Endereco
                                                  , d.Ativo))
                 .ToList();

@@ -1,13 +1,11 @@
 ﻿namespace BDS.Core.ValueObjects
 {
-    public record Endereco
-    {
-        public Endereco(string? logradouro,
-            string? cidade,
-            string? bairro,
-            string? uF,
-            string? cEP)
-        { }
-
-    }
+    public record Endereco( string Logradouro
+                           ,string Numero
+                           ,string Cidade
+                           ,string Bairro
+                           ,string Referencia
+                           ,string UF
+                           ,string CEP);
+ 
 }

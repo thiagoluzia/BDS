@@ -1,0 +1,98 @@
+﻿using BDS.Application.CQRS.Commands.Doacoes.Atualizar;
+using BDS.Application.CQRS.Commands.Doacoes.Deletar;
+using BDS.Application.CQRS.Commands.Doacoes.Incluir;
+using BDS.Application.CQRS.Queries.Doacoes.Consultar;
+using BDS.Application.CQRS.Queries.Doacoes.ConsultarId;
+using BDS.Application.CQRS.Queries.Doadores.ConsultarId;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BDS.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DoacaoController : ControllerBase
+    {
+
+        private readonly IMediator _mediator;
+
+
+        public DoacaoController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+
+        [HttpGet]
+        public  async Task<IActionResult> Consultar()
+        {
+
+            var doacoes = await _mediator.Send(new ConsultarDoacao());
+
+            if(doacoes is null)
+                return NotFound("Nenhum registro encontrado!");
+            
+            return Ok(doacoes);
+            
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ConsultarId(Guid id)
+        {
+
+            var doacao = new ConsultarDoacaoId(id);
+
+            var doacaoVielModel = await _mediator.Send(doacao);
+
+            if (doacaoVielModel is null)
+                return NotFound("Nenhum registro encontrado!");
+
+            
+            return Ok(doacaoVielModel); 
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Incluir(IncluirDoacao doacao)
+        {
+            var maiorIdade = await _mediator.Send(new ConsultarDoadorId(doacao.DoadorID));
+
+
+            var id = await _mediator.Send(doacao);
+            if (id == Guid.Empty)
+                return NotFound("Doção não criada.");
+
+            return CreatedAtAction(nameof(ConsultarId),new { id }, doacao);
+
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Atualizar(AtualizarDoacao doacao, Guid id)
+        {
+            if (doacao.Id != id)
+                return BadRequest("Id do objeto diferente do Id a ser atualizado."); 
+
+            await _mediator.Send(doacao);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Deletar(DeletarDoacao doacao, Guid id)
+        {
+
+            if (doacao.ID != id)
+                return BadRequest("Id do objeto diferente do Id a ser deletado.");
+
+            var existe =  _mediator.Send(new ConsultarDoacaoId(id));
+
+            if (existe is null)
+                return NotFound("A Doação a ser excluída não pode ser encontrada.");
+
+            await  _mediator.Send(doacao);
+
+            return NoContent();
+        }
+    }
+}

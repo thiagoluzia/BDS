@@ -13,11 +13,10 @@ namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
         public string Email { get; private set; }
         public Genero Genero { get; private set; }
         public double Peso { get; private set; }
-        public List<Doacao> Doacao { get; private set; }
         public Endereco Endereco { get; private set; }
 
 
-        public AtualizarDoador(Guid id, string nome, string email, Genero genero, double peso, List<Doacao> doacao, Endereco endereco)
+        public AtualizarDoador(Guid id, string nome, string email, Genero genero, double peso, Endereco endereco)
         {
             Id = id;
             Nome = nome;

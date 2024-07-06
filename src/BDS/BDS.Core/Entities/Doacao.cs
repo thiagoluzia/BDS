@@ -1,23 +1,42 @@
-﻿namespace BDS.Core.Entities
+﻿using BDS.Core.Enums;
+
+namespace BDS.Core.Entities
 {
     public class Doacao : BaseEntity
     {
-        public Guid DoadorID { get; private set; }
+        public Guid DoadorId { get; private set; }
         public DateTime DataDoacao { get; private set; }
         public int QuantidadeML { get; private set; }
-        public Doador? Doador { get; private set; }
 
 
-        public Doacao(Guid doadorID, DateTime dataDoacao, int quantidadeML)
+        public Doacao(Guid doadorId, DateTime dataDoacao, int quantidadeML)
         {
-            DoadorID = doadorID;
+            DoadorId = doadorId;
             DataDoacao = dataDoacao;
             QuantidadeML = +quantidadeML;
+            
         }
 
         public void Atualizar(int quantidadeML)
         {
             QuantidadeML = +quantidadeML;
+        }
+
+        public bool Elegibilidade()
+        {
+            if(QuantidadePermitida())
+                return true;
+
+            return false;
+        }
+
+      
+        protected bool QuantidadePermitida()
+        {
+            if(QuantidadeML >= (int)ELegibilidade.QUANTIDADE_ML_MINIMA && QuantidadeML <= (int)ELegibilidade.QUANTIDADE_ML_MAXIMA)
+                return true;
+
+            return false;
         }
 
     }

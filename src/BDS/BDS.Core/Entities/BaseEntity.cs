@@ -6,7 +6,6 @@
         public DateTime DataInclusao { get; private set; }
         public bool Ativo { get; private set; }
 
-
         protected BaseEntity()
         {
             Id = Guid.NewGuid();

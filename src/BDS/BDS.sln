@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BDS.Core", "BDS.Core\BDS.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BDS.Application", "BDS.Application\BDS.Application.csproj", "{DE4DD39C-A3F3-44A7-BB72-1124E1CE0628}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDS.Api", "BDS.Api\BDS.Api.csproj", "{F58E0DC6-7046-4C44-A4E5-304CAB7B98EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDS.Infrastructure", "BDS.Infrastructure\BDS.Infrastructure.csproj", "{63573BA9-977A-4345-A622-E7707A480CDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DE4DD39C-A3F3-44A7-BB72-1124E1CE0628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE4DD39C-A3F3-44A7-BB72-1124E1CE0628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE4DD39C-A3F3-44A7-BB72-1124E1CE0628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58E0DC6-7046-4C44-A4E5-304CAB7B98EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58E0DC6-7046-4C44-A4E5-304CAB7B98EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58E0DC6-7046-4C44-A4E5-304CAB7B98EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58E0DC6-7046-4C44-A4E5-304CAB7B98EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63573BA9-977A-4345-A622-E7707A480CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63573BA9-977A-4345-A622-E7707A480CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63573BA9-977A-4345-A622-E7707A480CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63573BA9-977A-4345-A622-E7707A480CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

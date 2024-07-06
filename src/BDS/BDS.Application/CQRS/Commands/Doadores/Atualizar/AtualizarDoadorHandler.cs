@@ -19,7 +19,15 @@ namespace BDS.Application.CQRS.Commands.Doadores.Atualizar
         {
             var doador = await _repository.ConsultarIdAsync(request.Id);
 
-            doador.Atualizar(request.Nome, request.Email, request.Peso, request.Endereco, request.Genero);
+            doador.Atualizar( request.Nome
+                            , request.Email
+                            , request.Peso
+                            , request.Endereco
+                            , request.Genero);
+
+
+            var existe = await _repository.ExisteEmail(doador.Email, doador.Id);
+            doador.ValidarEmailUnico(existe);
 
             await _repository.AlterarAsync(doador);
 

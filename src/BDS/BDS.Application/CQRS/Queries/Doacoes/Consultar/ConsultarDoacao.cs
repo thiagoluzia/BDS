@@ -9,9 +9,8 @@ namespace BDS.Application.CQRS.Queries.Doacoes.Consultar
         public Guid Id { get; private set; }
 
 
-        public ConsultarDoacao(Guid id)
+        public ConsultarDoacao()
         {
-            Id = id;
         }
 
     }
