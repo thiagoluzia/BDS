@@ -13,13 +13,13 @@ namespace BDS.Application.CQRS.Commands.Doadores.Incluir
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
         public double Peso { get; private set; }
-        public TipoSanquineo TipoSanquineo { get; private set; }
+        public TipoSanguineo TipoSanquineo { get; private set; }
         public FatorRh Fator { get; private set; }
         public List<Doacao> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
 
 
-        public IncluirDoador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator,  Endereco endereco)
+        public IncluirDoador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanguineo tipoSanquineo, FatorRh fator,  Endereco endereco)
         {
             Nome = nome;
             Email = email;

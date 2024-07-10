@@ -9,11 +9,13 @@ namespace BDS.Core.Entities
         public int QuantidadeML { get; private set; }
 
 
+        protected Doacao() { }
+
         public Doacao(Guid doadorId, DateTime dataDoacao, int quantidadeML)
         {
             DoadorId = doadorId;
             DataDoacao = dataDoacao;
-            QuantidadeML = +quantidadeML;
+            QuantidadeML = quantidadeML;
             
         }
 

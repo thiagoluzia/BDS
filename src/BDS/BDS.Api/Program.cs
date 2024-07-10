@@ -2,12 +2,15 @@ using BDS.Api.Filters;
 using BDS.Application.Abstractions.External.ViaCEP;
 using BDS.Application.CQRS;
 using BDS.Application.Validators;
+using BDS.Core.Entities;
+using BDS.Core.Enums;
 using BDS.Core.Repositories;
 using BDS.Infrastructure.Integrations.ViaCep.Services;
 using BDS.Infrastructure.Persistences;
 using BDS.Infrastructure.Persistences.Repositories;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +19,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Banco de Doação de Sangue", Version = "V1" });
+    //c.SchemaFilter<EnumSchemaFilter>();
+});
 
 //INTEGRAÇÕES
 builder.Services.AddHttpClient<IApiViaCepService, ApiViaCepService>();
@@ -26,6 +33,7 @@ builder.Services.AddScoped<IViaCepService, ViaCepService>();
 
 builder.Services.AddScoped<IDoadorRepository, DoadorRepository>();
 builder.Services.AddScoped<IDoacaoRepository, DoacaoRepository>();
+builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
 
 //Validaçoes
 builder.Services.AddValidatorsFromAssemblyContaining<IncluirDoadorValidator>();

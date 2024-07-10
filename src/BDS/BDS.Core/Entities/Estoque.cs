@@ -4,12 +4,14 @@ namespace BDS.Core.Entities
 {
     public class Estoque : BaseEntity
     {
-        public TipoSanquineo TipoSanquineo { get; private set; }
+        public TipoSanguineo TipoSanquineo { get; private set; }
         public FatorRh FatorRh { get; private set; }
         public int QuantidadeML { get; private set; }
 
 
-        public Estoque(TipoSanquineo tipoSanquineo, FatorRh fatorRh, int quantidadeMl)
+        protected Estoque() { }
+
+        public Estoque(TipoSanguineo tipoSanquineo, FatorRh fatorRh, int quantidadeMl)
         {
             TipoSanquineo = tipoSanquineo;
             FatorRh = fatorRh;
@@ -20,6 +22,11 @@ namespace BDS.Core.Entities
         public void AtualizarEstoque(int quantidadeMl)
         {
             QuantidadeML += quantidadeMl;
+        }
+
+        public void BaixarEstoque(int quantidadeMl)
+        {
+            QuantidadeML -= quantidadeMl;
         }
     }
 }

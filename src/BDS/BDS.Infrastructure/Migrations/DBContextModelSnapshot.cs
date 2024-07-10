@@ -88,6 +88,58 @@ namespace BDS.Infrastructure.Migrations
                     b.ToTable("Doadores");
                 });
 
+            modelBuilder.Entity("BDS.Core.Entities.Estoque", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataInclusao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FatorRh")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantidadeML")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoSanquineo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Estoques");
+                });
+
+            modelBuilder.Entity("BDS.Core.Entities.EstoqueConfig", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataInclusao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FatorRh")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuatidadeMinima")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoSanquineo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EstoqueConfig");
+                });
+
             modelBuilder.Entity("BDS.Core.Entities.Doacao", b =>
                 {
                     b.HasOne("BDS.Core.Entities.Doador", null)
