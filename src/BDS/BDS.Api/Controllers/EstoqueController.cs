@@ -85,7 +85,7 @@ namespace BDS.Api.Controllers
             if (existe is null)
                 return NotFound("Item de estoque não encontrado.");
 
-            var atualiza = await _mediator.Send(estoque);
+            await _mediator.Send(estoque);
 
             return NoContent();
         }

@@ -125,6 +125,10 @@
               "target": "Package",
               "version": "[6.0.31, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
+            },
             "System.CodeDom": {
               "target": "Package",
               "version": "[8.0.0, )"
