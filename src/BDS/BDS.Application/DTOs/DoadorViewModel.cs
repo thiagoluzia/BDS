@@ -14,7 +14,7 @@ namespace DTOs
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
         public double Peso { get; private set; }
-        public TipoSanquineo TipoSanquineo { get; private set; }
+        public TipoSanguineo TipoSanquineo { get; private set; }
         public FatorRh Fator { get; private set; }
         public ICollection<Doacao?> Doacao { get; private set; }
         public Endereco Endereco { get; private set; }
@@ -22,7 +22,7 @@ namespace DTOs
 
 
 
-        public DoadorViewModel(Guid id, string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, ICollection<Doacao?> doacao, Endereco endereco, bool ativo)
+        public DoadorViewModel(Guid id, string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanguineo tipoSanquineo, FatorRh fator, ICollection<Doacao?> doacao, Endereco endereco, bool ativo)
         {
             Id = id;
             Nome = nome;

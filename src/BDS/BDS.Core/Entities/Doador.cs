@@ -6,21 +6,20 @@ namespace BDS.Core.Entities
 {
     public class Doador :  BaseEntity
     {
-
-
         public string? Nome { get; private set; }
         public string? Email { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
         public double Peso { get; private set; }
-        public TipoSanquineo TipoSanquineo { get; private set; }
+        public TipoSanguineo TipoSanquineo { get; private set; }
         public FatorRh Fator { get; private set; }
         public ICollection<Doacao?> Doacoes { get; private set; }
         public Endereco Endereco { get; private set; }
 
+
         protected Doador(){}
 
-        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanquineo tipoSanquineo, FatorRh fator, Endereco endereco)
+        public Doador(string nome, string email, DateTime dataNascimento, Genero genero, double peso, TipoSanguineo tipoSanquineo, FatorRh fator, Endereco endereco)
         {
 
             Nome = nome;
@@ -33,11 +32,12 @@ namespace BDS.Core.Entities
 
             //Doacoes = new List<Doacao
 
-            if (PesoPermitido())
+            if (PesoPermitido(peso))
                 Peso = peso;
             else
                 throw new Exception("Abaixo do peso permitido para cadastro de doador.");
         }
+
 
         public void Atualizar(string nome, string email, double peso, Endereco endereco, Genero genero)
         {
@@ -48,21 +48,21 @@ namespace BDS.Core.Entities
             Endereco = endereco;
             Genero = genero;
         }
-
+        
         public void ValidarEmailUnico(bool existeEmail)
         {
             if(existeEmail)
                 throw new Exception("O e-mail já se encontra cadastrado");
         }
-
-
-        public bool Elegibilidade()
+        
+        public bool Elegibilidade(double peso)
         {
-            if(MaiorIdade() && PesoPermitido() && IntervaloDoacaoPermitido())
+            if(MaiorIdade() && PesoPermitido(peso) && IntervaloDoacaoPermitido())
                 return true;
 
             return false;
         }
+        
         protected bool MaiorIdade()
         {
             var hoje = DateTime.Today;
@@ -76,17 +76,23 @@ namespace BDS.Core.Entities
 
             return idade >= (int)ELegibilidade.MAIOR_IDADE;
         }
-        protected bool PesoPermitido()
+        
+        protected bool PesoPermitido(double peso)
         {
-            if(Genero == Genero.Feminino  && Peso >= (int)ELegibilidade.PESO_MINIMO_FEMININO || Genero == Genero.Masculino && Peso >= (int)ELegibilidade.PESO_MINIMO_MASCULINO)
+            if(Genero == Genero.Feminino  && peso >= (int)ELegibilidade.PESO_MINIMO_FEMININO 
+            || Genero == Genero.Masculino && peso >= (int)ELegibilidade.PESO_MINIMO_MASCULINO)
                 return true;
 
             return false;
         }
-
+        
         protected bool IntervaloDoacaoPermitido()
         {
-            var dataDoacao = Doacoes.Max(d => d.DataDoacao);
+            // Verificar se a lista de doações está vazia antes de calcular a data máxima
+            var dataDoacao = Doacoes.Any()
+                ? Doacoes.Max(d => d.DataDoacao)
+                : DateTime.MinValue;
+                
             var hoje = DateTime.Today;
             var ultimaDoacao = (hoje - dataDoacao).Days;
 

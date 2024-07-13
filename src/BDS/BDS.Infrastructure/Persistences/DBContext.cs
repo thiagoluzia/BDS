@@ -12,6 +12,7 @@ namespace BDS.Infrastructure.Persistences
 
         public DbSet<Doador> Doadores { get; set; }
         public DbSet<Doacao> Doacoes { get; set; }
+        public DbSet<Estoque> Estoques { get; private set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
