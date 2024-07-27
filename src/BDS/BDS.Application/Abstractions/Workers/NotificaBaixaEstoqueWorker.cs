@@ -59,7 +59,7 @@ namespace BDS.Application.Abstractions.Workers
         {
             _sendgridService.Enviar(new EmailRequest
             {
-                Assunto = $"Estoque Baixo - Sangue {estoque.TipoSanquineo}, {estoque.FatorRh}" ,
+                Assunto = $"Estoque Baixo - Sangue {estoque.TipoSanquineo} {estoque.FatorRh}" ,
                 Destinatario = "contabilidade.mouraluzia@gmail.com",
                 Corpo = MontarCorpoEmail(estoque)
             });
@@ -164,7 +164,7 @@ namespace BDS.Application.Abstractions.Workers
                                       </tbody>
                                   </table>
                               </div>
-                              <p>Se tiver dúvidas, entre em contato com o <a href=""#"">serviço responsável do setor</a>.</p>
+                              <p>Se tiver dúvidas, entre em contato com o <a href=""#"">responsável do setor</a>.</p>
                           </div>
                           <div class=""footer"">
                               <p>Atenciosamente,<br>BDS</p>

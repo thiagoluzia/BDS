@@ -92,7 +92,7 @@ namespace BDS.Infrastructure.Persistences.Repositories
         public async Task<int> IncluirAsync(Doador entity)
         {
           
-            var doadorId = await _dbContext.Doadores.AddAsync(entity);
+            await _dbContext.Doadores.AddAsync(entity);
 
             return await _dbContext.SaveChangesAsync();
 

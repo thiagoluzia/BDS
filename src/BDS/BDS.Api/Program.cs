@@ -3,20 +3,16 @@ using BDS.Application.Abstractions.External.ViaCEP;
 using BDS.Application.Abstractions.Workers;
 using BDS.Application.CQRS;
 using BDS.Application.Validators;
-using BDS.Core.Entities;
-using BDS.Core.Enums;
 using BDS.Core.Repositories;
+using BDS.Infrastructure.Integrations.Sendgrid.Services;
 using BDS.Infrastructure.Integrations.ViaCep.Services;
 using BDS.Infrastructure.Persistences;
 using BDS.Infrastructure.Persistences.Repositories;
 using FluentValidation;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Hangfire;
-using BDS.Infrastructure.Integrations.Sendgrid.Services;
 using SendGrid.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +33,6 @@ builder.Services.AddSingleton<ISendgridService, SendgridService>();
 
 //Interfaces
 builder.Services.AddScoped<IViaCepService, ViaCepService>();
-
 builder.Services.AddScoped<IDoadorRepository, DoadorRepository>();
 builder.Services.AddScoped<IDoacaoRepository, DoacaoRepository>();
 

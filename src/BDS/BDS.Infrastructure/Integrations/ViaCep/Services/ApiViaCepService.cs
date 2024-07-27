@@ -9,13 +9,13 @@ namespace BDS.Infrastructure.Integrations.ViaCep.Services
         private readonly HttpClient _httpClient;
 
 
-        public ApiViaCepService(HttpClient httpClient)
+        public ApiViaCepService(HttpClient httpClient)  
         {
             _httpClient = httpClient;
         }
 
 
-        public async Task<Endereco?> ConsultarCepAsync(string cep)
+        public async Task<Endereco> ConsultarCepAsync(string cep)
         {
             var request = @$"https://viacep.com.br/ws/{cep}/json";
             var response = await _httpClient.GetAsync(request);
@@ -28,9 +28,8 @@ namespace BDS.Infrastructure.Integrations.ViaCep.Services
                 return endereco;
             }
             else 
-            { 
                 return null;
-            }
+            
 
         }
     }
