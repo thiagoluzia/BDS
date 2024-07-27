@@ -49,7 +49,7 @@ namespace BDS.Application.Abstractions.Workers
 
             #region Com Hangfire
 
-            RecurringJob.AddOrUpdate("Notificar estoque minimo.", () => NotificaBaixaEstoque(), "0 6 * * *");
+            RecurringJob.AddOrUpdate("Notificar estoque minimo.", () =>  NotificaBaixaEstoque(), "0 6 * * *");
 
             #endregion
 

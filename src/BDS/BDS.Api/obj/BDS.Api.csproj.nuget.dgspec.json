@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[1.8.14, )"
             },
+            "Hangfire.Dashboard.BasicAuthorization": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.3.0, )"
@@ -165,6 +169,10 @@
             "Hangfire.Core": {
               "target": "Package",
               "version": "[1.8.14, )"
+            },
+            "Hangfire.Dashboard.BasicAuthorization": {
+              "target": "Package",
+              "version": "[1.0.2, )"
             },
             "MediatR": {
               "target": "Package",

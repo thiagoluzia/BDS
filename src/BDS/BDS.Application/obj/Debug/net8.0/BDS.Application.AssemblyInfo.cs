@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BDS.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+033a00aea2f19f6cdd65b8ca4864bd706260385c")]
 [assembly: System.Reflection.AssemblyProductAttribute("BDS.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BDS.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

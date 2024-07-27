@@ -84,3 +84,4 @@ D:\source\BDS\src\BDS\BDS.Api\bin\Debug\net8.0\SendGrid.dll
 D:\source\BDS\src\BDS\BDS.Api\bin\Debug\net8.0\SendGrid.Extensions.DependencyInjection.dll
 D:\source\BDS\src\BDS\BDS.Api\bin\Debug\net8.0\StarkbankEcdsa.dll
 D:\source\BDS\src\BDS\BDS.Api\obj\Debug\net8.0\BDS.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\source\BDS\src\BDS\BDS.Api\bin\Debug\net8.0\Hangfire.Dashboard.BasicAuthorization.dll

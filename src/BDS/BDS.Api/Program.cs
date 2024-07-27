@@ -1,5 +1,6 @@
 using BDS.Api.Filters;
 using BDS.Application.Abstractions.External.ViaCEP;
+using BDS.Application.Abstractions.Hangfire;
 using BDS.Application.Abstractions.Workers;
 using BDS.Application.CQRS;
 using BDS.Application.Validators;
@@ -73,7 +74,10 @@ builder.Services.AddSingleton<INotificaBaixaEstoqueWorker>(provider => provider.
 
 var app = builder.Build();
 
-app.UseHangfireDashboard();
+app.UseHangfireDashboard("/hangfire",new DashboardOptions 
+{
+    Authorization = HangFireDashboard.AuthAuthorizationFilters()
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
